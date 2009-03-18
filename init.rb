@@ -3,6 +3,7 @@ require 'redmine'
 Redmine::Plugin.register :redmine_archive do
   name 'Mail Archive plugin'
   author 'Nobuhiro IMAI'
+  url 'http://github.com/no6v/redmine_archive/tree/master'
   description 'This is a plugin for Mail Archive'
   version '0.0.3'
 end
