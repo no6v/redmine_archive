@@ -30,7 +30,7 @@ module ArchiveHelper
   def __cipher__(data, &block)
     c = OpenSSL::Cipher.new("aes-256-cbc")
     c.instance_eval(&block)
-    c.pkcs5_keyivgen(Setting.mail_handler_api_key)
+    c.pkcs5_keyivgen(Setting.plugin_redmine_archive["archive_key"])
     result = c.update(data)
     result << c.final
   end
@@ -47,6 +47,7 @@ module ArchiveHelper
     end
 
     def link_to_archive(text)
+      return if Setting.plugin_redmine_archive["archive_key"].blank?
       text.gsub!(/\[[\w@.-]+:\d+\]/) do |m|
         content_tag(:a, m, :href => url_for(archive(m)))
       end

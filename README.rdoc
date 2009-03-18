@@ -8,9 +8,10 @@ name, mail address, phone number, office address, and so on.
 
 = For admins
 
-This plugin depends on Setting#mail_handler_api_key to encrypt/decrypt
-the mail key, so ensure to generate mail_handler_api_key even if you
-do not enable the web service for incoming emails.
+This plugin was used to depend on Setting#mail_handler_api_key to
+encrypt/decrypt the mail key, but now works with individual setting.
+Create an archive key on the plugin setting panel at first. Empty
+archive key makes no link to archive.
 
 = Updating the articles table
 

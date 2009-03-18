@@ -1,0 +1,5 @@
+<p>
+<label for="settings_archive_key"><%= l(:label_archive_key) %></label>
+<%= text_field_tag "settings[archive_key]", @settings["archive_key"], :size => 30, :id => "settings_archive_key" %>
+<%= link_to_function l(:label_generate_key), "$('settings_archive_key').value = randomKey(16)" %>
+</p>

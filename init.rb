@@ -5,7 +5,8 @@ Redmine::Plugin.register :redmine_archive do
   author 'Nobuhiro IMAI'
   url 'http://github.com/no6v/redmine_archive/tree/master'
   description 'This is a plugin for Mail Archive'
-  version '0.0.3'
+  version '0.0.4'
+  settings :default => {"archive_key" => ""}, :partial => "settings/settings"
 end
 
 module ::Redmine
