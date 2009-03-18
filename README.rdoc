@@ -1,0 +1,23 @@
+= Mail Archive plugin for Redmine
+
+This plugin will be usefull to make a link to articles in archive, but
+not to provide any archive index, so one could not use this as
+crossover list viewer. This is important feature on considering
+privacy protection in relation to personal data, including customer
+name, mail address, phone number, office address, and so on.
+
+= For admins
+
+This plugin depends on Setting#mail_handler_api_key to encrypt/decrypt
+the mail key, so ensure to generate mail_handler_api_key even if you
+do not enable the web service for incoming emails.
+
+= Updating the articles table
+
+Use bin/importer.rb to import new mails. This script scans its
+arguments as paths to mail data, and picks X-ML-Name and X-Mail-Count
+header variables, which are treated as Article#list and Article#count
+respectively. Path is expanded to absolute path, so be careful where
+the mail data is stored.
+
+Enjoy!

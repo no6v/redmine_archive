@@ -1,0 +1,20 @@
+<h2><%= @mail.subject.toutf8 %></h2>
+<ul>
+  <li>From: <%=h @mail.from %></li>
+  <li>Date: <%=h @mail.date.rfc2822 %></li>
+</ul>
+<hr/>
+<%- if @mail.multipart? -%>
+<%- coverpage, *parts = @mail.parts -%>
+<pre><%=h coverpage.body.toutf8 %></pre>
+<hr/>
+<ul class="properties">
+<%- parts.each_with_index do |part, index| -%>
+<li>
+<%= link_to_part(part, index) %>
+</li>
+<%- end -%>
+</ul>
+<%- else -%>
+<pre><%=h @mail.body.toutf8 %></pre>
+<%- end -%>

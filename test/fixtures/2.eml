@@ -1,0 +1,34 @@
+Date: Wed, 11 Mar 2009 12:54:56 +0900
+From: Hoge FUGA <fuga@hoge.example.net>
+Subject: [test:2] Re: test mail 1
+Message-Id: <20090311.125456.23456.fuga@hoge.example.net>
+In-Reply-To: <20090311.125218.12345.foo@bar.example.org>
+References: <20090311.125218.12345.foo@bar.example.org>
+Content-Type: Multipart/Mixed; boundary=foo-bar-baz
+
+--foo-bar-baz
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+Hi,
+
+foo@bar.example.org wrote:
+> Hello,
+>
+> this is a test mail, thanks.
+
+OK, patch attached.
+--foo-bar-baz
+Content-Type: Text/X-Patch; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline; filename="sample.patch"
+
+diff --git a/routes.rb b/routes.rb
+new file mode 100644
+index 0000000..a9fa79b
+--- /dev/null
++++ b/routes.rb
+@@ -0,0 +1 @@
++connect "archive/show/:id/:part", :controller => "archive", :action => "show"
+
+--foo-bar-baz--

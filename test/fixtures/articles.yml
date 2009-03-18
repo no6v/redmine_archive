@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  list: test
+  count: 1
+  path: <%= File.join(RAILS_ROOT, "vendor/plugins/redmine_archive/test/fixtures/1.eml") %>
+  hidden: false
+two:
+  id: 2
+  list: test
+  count: 2
+  path: <%= File.join(RAILS_ROOT, "vendor/plugins/redmine_archive/test/fixtures/2.eml") %>
+  hidden: false
