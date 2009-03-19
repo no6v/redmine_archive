@@ -8,7 +8,8 @@ class ArchiveController < ApplicationController
     @mail = Article.mail(*article(params[:id]))
     if part = params[:part]
       data = @mail.parts[Integer(part)]
-      send_data(data.body, :type => data.content_type, :filename => data.disposition_param("filename"))
+      send_data(data.body, :type => data.content_type,
+        :filename => data.disposition_param("filename", "unknown").toutf8)
       return true
     end
   rescue

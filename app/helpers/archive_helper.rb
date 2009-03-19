@@ -11,7 +11,7 @@ module ArchiveHelper
 
   def link_to_part(part, index)
     link_to(("%s (%s, %s)" % [
-          part.disposition_param("filename", "unknown"),
+          part.disposition_param("filename", "unknown").toutf8,
           number_to_human_size(part.body.size),
           part.content_type]),
       {:part => index.next}, :class => "icon icon-attachment")
