@@ -9,7 +9,7 @@ class ArchiveController < ApplicationController
     if part = params[:part]
       data = @mail.parts[Integer(part)]
       send_data(data.body, :type => data.content_type,
-        :filename => data.disposition_param("filename", "unknown").toutf8)
+        :filename => data.disposition_param("filename", "unknown#{part}").toutf8)
       return true
     end
   rescue
