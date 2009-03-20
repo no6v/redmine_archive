@@ -30,5 +30,9 @@ index 0000000..a9fa79b
 +++ b/routes.rb
 @@ -0,0 +1 @@
 +connect "archive/show/:id/:part", :controller => "archive", :action => "show"
+--foo-bar-baz
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
+--Nov
 --foo-bar-baz--

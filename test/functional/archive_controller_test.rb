@@ -59,8 +59,10 @@ class ArchiveControllerTest < ActionController::TestCase
       assert_template "show"
       assert_tag(:tag => "ul", :attributes => {:class => "properties"},
         :child => {:tag => "li",
-          :descendant => {:tag => "a", :content => /sample.patch/,
-            :attributes => {:href => "/archive/show/#{params[:id]}/1"}}})
+          :descendant => {
+            :tag => "a", :content => /sample.patch/, :attributes => {:href => "/archive/show/#{params[:id]}/1"},
+            :tag => "a", :content => /unknown2/, :attributes => {:href => "/archive/show/#{params[:id]}/2"},
+          }})
     end
   end
 
@@ -72,6 +74,11 @@ class ArchiveControllerTest < ActionController::TestCase
       assert_response :success
       assert_not_nil assigns(:mail)
       assert_equal "text/x-patch", @response.content_type.downcase
+      get params[:action], :id => params[:id], :part => 2
+      assert_response :success
+      assert_not_nil assigns(:mail)
+      assert_equal "text/plain", @response.content_type.downcase
+      assert_equal 'attachment; filename="unknown2"', @response.headers["Content-Disposition"]
     end
   end
 end
