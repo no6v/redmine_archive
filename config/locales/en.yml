@@ -2,3 +2,6 @@
 en:
   article_not_found: "Article not found"
   label_archive_key: "Archive key"
+  enclose_this_mail: "Enclose this mail"
+  disclose_this_mail: "Disclose this mail"
+  label_hidden_time_by: "This mail was hidden by {{author}} {{age}} ago"

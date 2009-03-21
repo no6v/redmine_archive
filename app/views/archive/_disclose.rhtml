@@ -1,0 +1,6 @@
+<p>
+<%= authoring @article.updated_on, @article.user, :label => :label_hidden_time_by %>
+<% if User.current.admin? %>
+(<%= link_to l(:disclose_this_mail), :action => "disclose", :id => params[:id] %>)
+<% end %>
+</p>

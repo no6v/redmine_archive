@@ -2,3 +2,6 @@
 ja:
   article_not_found: "記事が見つかりません"
   label_archive_key: "アーカイブキー"
+  enclose_this_mail: "このメールを非公開にする"
+  disclose_this_mail: "このメールを公開する"
+  label_hidden_time_by: "このメールは{{author}}が{{age}}前に非公開にしました"

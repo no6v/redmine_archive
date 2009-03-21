@@ -1,3 +1,8 @@
+<div id="article">
+<%- if @article.hidden? -%>
+<%= render :partial => "disclose" %>
+<%- else -%>
+<p><%= link_to_remote l(:enclose_this_mail), :url => {:action => "enclose", :id => params[:id]} %></p>
 <h2><%= @mail.subject.toutf8 %></h2>
 <ul>
   <li>From: <%=h @mail.from %></li>
@@ -18,3 +23,5 @@
 <%- else -%>
 <pre><%=h @mail.body.toutf8 %></pre>
 <%- end -%>
+<%- end -%>
+</div>
