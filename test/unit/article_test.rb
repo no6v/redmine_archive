@@ -4,7 +4,7 @@ class ArticleTest < ActiveSupport::TestCase
   fixtures :articles
 
   def test_mail
-    mail = Article.mail("test", 1)
+    article, mail = Article.mail("test", 1)
     assert_instance_of ::TMail::Mail, mail
   end
 end

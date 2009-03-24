@@ -81,4 +81,36 @@ class ArchiveControllerTest < ActionController::TestCase
       assert_equal 'attachment; filename="unknown2"', @response.headers["Content-Disposition"]
     end
   end
+
+  def test_enclose
+    @request.session[:user_id] = 1
+    with_settings(:plugin_redmine_archive => {"archive_key" => "hogefuga-foo-bar"}) do
+      params = archive("[test:1]")
+      xhr :post, :enclose, :id => params[:id]
+      assert_response :success
+      assert_select_rjs :replace_html, "article" do
+        assert_select "a", "Disclose this mail"
+      end
+      test1 = Article.find_by_list_and_count("test", 1)
+      assert_equal true, test1.hidden?
+    end
+  end
+
+  def test_disclose
+    @request.session[:user_id] = 2
+    with_settings(:plugin_redmine_archive => {"archive_key" => "hogefuga-foo-bar"}) do
+      params = archive("[test:1]")
+      get :disclose, :id => params[:id]
+      assert_response 403
+    end
+    @request.session[:user_id] = 1
+    with_settings(:plugin_redmine_archive => {"archive_key" => "hogefuga-foo-bar"}) do
+      params = archive("[test:1]")
+      get :disclose, :id => params[:id]
+      assert_response :redirect
+      assert_redirected_to :action => "show", :id => params[:id]
+      test1 = Article.find_by_list_and_count("test", 1)
+      assert_equal false, test1.hidden?
+    end
+  end
 end

@@ -23,7 +23,7 @@ class ArchiveController < ApplicationController
 
   def enclose
     if @article = Article.enclose(*article(params[:id]))
-      expire_fragment(%r!show/#{params[:id]}!)
+      clear_cache
       render :update do |page|
         page.replace_html :article, :partial => "disclose"
       end
@@ -34,6 +34,13 @@ class ArchiveController < ApplicationController
 
   def disclose
     Article.disclose(*article(params[:id]))
+    clear_cache
     redirect_to :action => "show", :id => params[:id]
+  end
+
+  private
+
+  def clear_cache
+    expire_fragment(%r!archive/show/#{params[:id]}!)
   end
 end
