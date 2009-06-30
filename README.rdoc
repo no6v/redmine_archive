@@ -15,7 +15,7 @@ archive key makes no link to archive.
 
 = Updating the articles table
 
-Use bin/importer.rb to import new mails. This script scans its
+Use bin/import.rb to import new mails. This script scans its
 arguments as paths to mail data, and picks X-ML-Name and X-Mail-Count
 header variables, which are treated as Article#list and Article#count
 respectively. Path is expanded to absolute path, so be careful where
